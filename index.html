@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id = "items"></ul>
+    <script>
+        const items = document.getElementById('items')
+        fetch("https://api.freeapi.app/api/v1/public/randomproducts")
+           .then((response) => {
+             response.json().then((obj) => {
+                const products = obj.data.data;
+                console.log(products);
+                products.forEach(products => {
+                    const li = document.createElement("li")
+                    li.innerText = product.title;
+                    items.appendchild(li)
+                });
+            }).catch(err => {
+                console.log('Error converting JSON');
+                
+             })
+           }) 
+           // we give fullfill call back -- server through the json form data 
+         
+        .catch((err) => {}) // we give error call back in this program 
+        .finally(() => {}) // In this we send the call back of either the  code error is come or not 
+    </script>
+</body>
+</html>
